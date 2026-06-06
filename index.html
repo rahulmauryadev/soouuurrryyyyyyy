@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Radhika 💕</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff6b9d;
+    --rose: #ff4081;
+    --deep: #c2185b;
+    --soft: #fce4ec;
+    --glow: rgba(255,107,157,0.6);
+    --glass: rgba(255,255,255,0.12);
+    --glass-border: rgba(255,255,255,0.25);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #1a0a12 0%, #2d0a1e 40%, #1a0a12 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E💕%3C/text%3E%3C/svg%3E") 12 12, auto;
+  }
+
+  /* FLOATING HEARTS BG */
+  .hearts-bg { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+  .heart-float {
+    position:absolute; bottom:-60px; font-size:1.2rem; opacity:0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity:0; }
+    10% { opacity:0.7; }
+    90% { opacity:0.3; }
+    100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity:0; }
+  }
+
+  /* PAGES */
+  .page { display:none; position:relative; z-index:1; min-height:100vh; }
+  .page.active { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; }
+
+  /* GLASS BOX */
+  .glass-box {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 60px rgba(255,107,157,0.15);
+    padding: 40px 35px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  /* TYPOGRAPHY */
+  .title { font-family:'Playfair Display',serif; color:#fff; font-size:1.8rem; font-weight:700; margin-bottom:10px; }
+  .subtitle { color:rgba(255,255,255,0.75); font-size:1rem; font-weight:400; letter-spacing:0.05em; }
+  .reveal-text {
+    opacity:0; transform:translateY(20px);
+    animation: revealUp 0.8s forwards;
+  }
+  @keyframes revealUp {
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* =================== PAGE 1 =================== */
+  #page1 .big-heart {
+    font-size:5rem; display:block; margin:0 auto 20px;
+    animation: heartBeat 1.5s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #ff6b9d);
+  }
+  @keyframes heartBeat {
+    0%,100% { transform:scale(1); }
+    14% { transform:scale(1.15); }
+    28% { transform:scale(1); }
+    42% { transform:scale(1.1); }
+    70% { transform:scale(1); }
+  }
+  @keyframes glowPulse {
+    0%,100% { filter: drop-shadow(0 0 15px #ff6b9d); }
+    50% { filter: drop-shadow(0 0 40px #ff4081) drop-shadow(0 0 60px #ff6b9d); }
+  }
+
+  .meter-wrap { margin:25px 0 15px; position:relative; }
+  .meter-track {
+    height:22px; border-radius:50px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    overflow:hidden; position:relative;
+  }
+  .meter-fill {
+    height:100%; width:0%; border-radius:50px;
+    background: linear-gradient(90deg, #ff6b9d, #ff4081, #e91e8c);
+    box-shadow: 0 0 15px rgba(255,64,129,0.7);
+    transition: width 0.05s linear;
+    position:relative;
+  }
+  .meter-fill::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
+  .meter-pct { color:#ff6b9d; font-size:1.3rem; font-weight:700; margin-top:8px; }
+  .meter-msg { color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:5px; }
+
+  /* =================== PAGE 2 =================== */
+  .heart-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin:25px 0; }
+  .heart-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius:18px;
+    padding:25px 15px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    position:relative;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+  }
+  .heart-card:hover { transform:translateY(-5px) scale(1.05); box-shadow:0 10px 30px rgba(255,107,157,0.4); }
+  .heart-card.opened { border-color:#ff6b9d; background:rgba(255,107,157,0.15); }
+  .heart-card .card-heart { font-size:2.5rem; display:block; animation:heartBeat 2s ease-in-out infinite; }
+  .heart-card.opened .card-heart { animation:none; }
+
+  /* Pop message */
+  .pop-overlay {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.7); z-index:100; align-items:center; justify-content:center;
+    backdrop-filter:blur(5px);
+  }
+  .pop-overlay.show { display:flex; }
+  .pop-box {
+    background: linear-gradient(135deg, rgba(255,107,157,0.2), rgba(255,64,129,0.1));
+    border:1px solid rgba(255,107,157,0.4);
+    border-radius:24px; padding:40px; max-width:380px; width:90%;
+    text-align:center; backdrop-filter:blur(20px);
+    animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+    box-shadow:0 0 60px rgba(255,107,157,0.3);
+  }
+  @keyframes popIn { from{transform:scale(0.5) rotate(-5deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+  .pop-box .pop-emoji { font-size:3rem; display:block; margin-bottom:15px; }
+  .pop-box p { color:#fff; font-size:1rem; line-height:1.6; }
+  .pop-close { margin-top:20px; background:linear-gradient(135deg,#ff6b9d,#ff4081); border:none; color:#fff; padding:10px 30px; border-radius:50px; cursor:pointer; font-family:'Quicksand',sans-serif; font-weight:600; }
+
+  .next-btn {
+    display:none; margin-top:20px;
+    background:linear-gradient(135deg,#ff6b9d,#c2185b);
+    border:none; color:#fff; padding:14px 35px; border-radius:50px;
+    font-family:'Quicksand',sans-serif; font-size:1rem; font-weight:700;
+    cursor:pointer; box-shadow:0 5px 20px rgba(255,107,157,0.5);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+  /* =================== PAGE 3 =================== */
+  .balloons-row { display:flex; justify-content:center; gap:25px; margin:30px 0; flex-wrap:wrap; }
+  .balloon {
+    font-size:4rem; cursor:pointer; display:block;
+    animation: balloonFloat 3s ease-in-out infinite;
+    transition:all 0.3s; user-select:none;
+    filter: drop-shadow(0 5px 15px rgba(255,107,157,0.4));
+  }
+  .balloon:nth-child(2) { animation-delay:0.5s; }
+  .balloon:nth-child(3) { animation-delay:1s; }
+  .balloon:nth-child(4) { animation-delay:1.5s; }
+  .balloon:nth-child(5) { animation-delay:2s; }
+  @keyframes balloonFloat { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-15px) rotate(3deg)} }
+  .balloon.popped { animation:pop 0.3s forwards; pointer-events:none; }
+  @keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.5)} 100%{transform:scale(0);opacity:0} }
+
+  /* =================== PAGE 4 - FORGIVENESS METER =================== */
+  .forgive-fill {
+    height:100%; width:0%; border-radius:50px;
+    background: linear-gradient(90deg, #ff6b9d, #ff4081, #e91e8c, #9c27b0, #ff6b9d);
+    background-size: 200%;
+    box-shadow: 0 0 20px rgba(255,64,129,0.8);
+    transition: width 0.04s linear;
+    animation: gradientShift 2s linear infinite;
+  }
+  @keyframes gradientShift { 0%{background-position:0%} 100%{background-position:200%} }
+
+  .broken-msg { 
+    color:#ff6b9d; font-size:1.1rem; font-weight:700;
+    animation: glitch 0.3s infinite alternate;
+  }
+  @keyframes glitch {
+    0%{text-shadow:2px 0 #ff4081,-2px 0 #9c27b0}
+    100%{text-shadow:-2px 0 #ff4081,2px 0 #9c27b0}
+  }
+
+  .love-btn {
+    background:linear-gradient(135deg,#ff6b9d,#c2185b,#9c27b0);
+    border:none; color:#fff; padding:18px 50px; border-radius:50px;
+    font-family:'Quicksand',sans-serif; font-size:1.2rem; font-weight:700;
+    cursor:pointer; box-shadow:0 0 40px rgba(255,107,157,0.6);
+    animation: loveGlow 1.5s ease-in-out infinite, pulse 1.5s ease-in-out infinite;
+    margin-top:20px; letter-spacing:0.05em;
+  }
+  @keyframes loveGlow { 0%,100%{box-shadow:0 0 30px rgba(255,107,157,0.5)} 50%{box-shadow:0 0 60px rgba(255,107,157,0.9),0 0 100px rgba(255,64,129,0.4)} }
+
+  /* =================== PAGE 5 - NOTE =================== */
+  .note-box {
+    background: rgba(255,255,255,0.07);
+    border:1px dashed rgba(255,107,157,0.5);
+    border-radius:18px; padding:30px; margin:20px 0;
+    position:relative;
+  }
+  .note-box::before { content:'📝'; position:absolute; top:-15px; left:20px; font-size:1.5rem; background:#1a0a12; padding:0 10px; }
+
+  /* =================== PAGE 6 - FINAL SURPRISE =================== */
+  .final-msg { color:#fff; font-size:1.1rem; line-height:1.8; }
+  .photo-frame {
+    border:3px solid rgba(255,107,157,0.5);
+    border-radius:20px; padding:10px;
+    background:rgba(255,107,157,0.1);
+    margin:20px auto;
+    box-shadow:0 0 40px rgba(255,107,157,0.3);
+    max-width:300px;
+    display:flex; align-items:center; justify-content:center;
+    min-height:200px;
+    font-size:5rem;
+  }
+  .stars-confetti { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+
+  /* UNIVERSAL BUTTON */
+  .btn-next {
+    background:linear-gradient(135deg,#ff6b9d,#c2185b);
+    border:none; color:#fff; padding:14px 35px; border-radius:50px;
+    font-family:'Quicksand',sans-serif; font-size:1rem; font-weight:700;
+    cursor:pointer; box-shadow:0 5px 25px rgba(255,107,157,0.5);
+    transition:all 0.3s; margin-top:15px;
+  }
+  .btn-next:hover { transform:translateY(-3px); box-shadow:0 8px 35px rgba(255,107,157,0.7); }
+
+  /* ANIMATIONS */
+  .fade-in { animation:fadeIn 1s forwards; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  .sparkle { position:absolute; pointer-events:none; font-size:0.8rem; animation:sparkleAnim 1s forwards; }
+  @keyframes sparkleAnim { 0%{opacity:1;transform:scale(0)} 50%{opacity:1;transform:scale(1.5)} 100%{opacity:0;transform:scale(0) translateY(-30px)} }
+
+  /* GLITTER STARS ON BG */
+  .star-particle { position:fixed; pointer-events:none; font-size:0.7rem; opacity:0; animation:twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:0.8;transform:scale(1)} }
+  .photo-frame img{
+    width:100%;
+    max-width:280px;
+    height:300px;
+    object-fit:cover;
+    border-radius:15px;
+}
+</style>
+</head>
+<body>
+
+<!-- Floating Hearts Background -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- =================== PAGE 1 =================== -->
+<div class="page active" id="page1">
+  <div class="glass-box reveal-text">
+    <span class="big-heart">💗</span>
+    <h1 class="title" style="animation-delay:0.3s">Hey Radhika ✨</h1>
+    <p class="subtitle reveal-text" style="animation-delay:0.6s">Measuring your cuteness... 🌸</p>
+
+    <div class="meter-wrap">
+      <div class="meter-track">
+        <div class="meter-fill" id="cuteMeter"></div>
+      </div>
+      <div class="meter-pct" id="cutePercent">0%</div>
+    </div>
+    <p class="meter-msg" id="meterMsg">Please wait... 💕</p>
+  </div>
+</div>
+
+<!-- =================== PAGE 2 =================== -->
+<div class="page" id="page2">
+  <div class="glass-box">
+    <h1 class="title">Tap each heart for me 💝</h1>
+    <p class="subtitle" style="margin-top:8px">6 little secrets waiting for you... 🌷</p>
+
+    <div class="heart-grid" id="heartGrid">
+      <div class="heart-card" onclick="openHeart(0)"><span class="card-heart">💖</span></div>
+      <div class="heart-card" onclick="openHeart(1)"><span class="card-heart">💞</span></div>
+      <div class="heart-card" onclick="openHeart(2)"><span class="card-heart">💓</span></div>
+      <div class="heart-card" onclick="openHeart(3)"><span class="card-heart">💗</span></div>
+      <div class="heart-card" onclick="openHeart(4)"><span class="card-heart">💕</span></div>
+      <div class="heart-card" onclick="openHeart(5)"><span class="card-heart">💘</span></div>
+    </div>
+
+    <button class="next-btn" id="nextBtn2" onclick="goToPage('page3')">
+      Next — Pop some balloons 🎈
+    </button>
+  </div>
+</div>
+
+<!-- Pop Message Overlay -->
+<div class="pop-overlay" id="popOverlay">
+  <div class="pop-box">
+    <span class="pop-emoji" id="popEmoji"></span>
+    <p id="popMsg"></p>
+    <button class="pop-close" onclick="closePopup()">Close 💕</button>
+  </div>
+</div>
+
+<!-- =================== PAGE 3 =================== -->
+<div class="page" id="page3">
+  <div class="glass-box">
+    <h1 class="title">Pop the Balloons! 🎈</h1>
+    <p class="subtitle" style="margin-top:8px">Each balloon has a little message... 🌸</p>
+
+    <div class="balloons-row" id="balloonsRow">
+      <span class="balloon" onclick="popBalloon(0)">🎈</span>
+      <span class="balloon" onclick="popBalloon(1)">🎈</span>
+      <span class="balloon" onclick="popBalloon(2)">🎈</span>
+      <span class="balloon" onclick="popBalloon(3)">🎈</span>
+      <span class="balloon" onclick="popBalloon(4)">🎈</span>
+    </div>
+
+    <p class="subtitle" id="balloonHint">Tap a balloon to pop it! 💕</p>
+  </div>
+</div>
+
+<!-- Balloon Pop Message Overlay -->
+<div class="pop-overlay" id="balloonOverlay">
+  <div class="pop-box">
+    <span class="pop-emoji" id="balloonEmoji"></span>
+    <p id="balloonMsg"></p>
+    <button class="pop-close" id="balloonCloseBtn" onclick="closeBalloonPopup()">Next Balloon 🎈</button>
+  </div> 
+</div>
+
+<!-- =================== PAGE 4 =================== -->
+<div class="page" id="page4">
+  <div class="glass-box">
+    <span style="font-size:3rem; display:block; margin-bottom:10px; animation:heartBeat 1s infinite">🌸</span>
+    <h1 class="title">Forgiveness Meter 💫</h1>
+    <p class="subtitle" style="margin-top:8px; margin-bottom:20px">Calculating... how much you've forgiven me 🥺</p>
+
+    <div class="meter-wrap">
+      <div class="meter-track" style="height:28px">
+        <div class="forgive-fill" id="forgiveMeter"></div>
+      </div>
+      <div class="meter-pct" id="forgivePercent" style="font-size:1.5rem">0%</div>
+    </div>
+    <p class="meter-msg" id="forgiveMsg" style="font-size:0.9rem">Measuring your beautiful heart... 💖</p>
+
+    <div id="brokenDiv" style="display:none; margin-top:15px">
+      <p class="broken-msg">💥 Cuteness Meter is Officially BROKEN! 💥</p>
+      <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; margin-top:8px">Your heart is too big to measure! 🌟</p>
+      <button class="love-btn" id="loveBtn" onclick="goToPage('page5')" style="display:none; margin-top:20px">
+        💗 🌸 You're Special To Me 🌸💗
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- =================== PAGE 5 =================== -->
+<div class="page" id="page5">
+  <div class="glass-box">
+    <span style="font-size:3rem; display:block; margin-bottom:15px">🤝</span>
+    <h1 class="title" style="font-size:1.5rem">🌷 Let's Make More Memories 🌷</h1>
+
+    <div class="note-box" style="margin:20px 0">
+      <p style="color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.7; font-style:italic">
+  Humari Kuch Yaadein 💌<br><br>
+
+Radhika, jab bhi humari dosti ke baare mein sochta hoon to yaad aata hai ki humne saath mein kitni bakchodi ki hai. 😂 Kabhi bina kisi reason ke hasna, kabhi random topics par ghanto baatein karna aur kabhi itni faltu baatein karna ki khud hi hasi aa jaye. 🌸<br><br>
+
+Mujhe humara saath ghoomna bhi bahut yaad aata hai. Temple jana, idhar-udhar ghoomna aur phir tumhe tez dhoop aur garmi mein ghumaana. ☀️😂 Aaj sochta hoon to lagta hai ki tumne mujhe itna jhela kaise.<br><br>
+
+Humne saath mein itni saari chhoti-chhoti memories banayi hain jo shayad dusron ko normal lagen, lekin mere liye bahut special hain. ✨<br><br>
+
+Tumhare saath har moment interesting ban jaata hai. Chahe kitni bhi bakchodi ho, kitni bhi lambi baatein ho ya kitna bhi ghoomna ho, maza hamesha aata tha. 💕<br><br>
+
+Aur sach kahun to meri favourite memories mein se bahut si memories tumhare saath hi judi hui hain. ❤️
+
+</p>
+
+    </div>
+
+    <button class="btn-next" onclick="goToPage('page6')">
+      See the Final Surprise 🎁✨
+    </button>
+  </div>
+</div>
+
+<!-- =================== PAGE 6 - FINAL SURPRISE =================== -->
+<div class="page" id="page6">
+  <div class="stars-confetti" id="confetti"></div>
+  <div class="glass-box" style="max-width:560px">
+    <span style="font-size:3rem; display:block; margin-bottom:15px; animation:heartBeat 1s infinite">🌟</span>
+    <h1 class="title">For You, Radhika 💗</h1>
+
+    <div class="photo-frame" id="photoFrame">
+      <img src="images/radhika.jpeg" alt="Radhika">
+    </div>
+
+    <div class="note-box" style="margin:20px 0; border-color:rgba(255,215,0,0.4)">
+      <p class="final-msg">
+        You walked into my life like sunshine after a storm ☀️<br><br>
+        And I was foolish enough to let clouds get in the way. 🌧️<br><br>
+        This page exists because you deserve a whole universe of apologies, of love, of care — and I can only start with this. 💝<br><br>
+        <strong style="color:#ff6b9d">Thank you for being you. Thank you for existing. And I'm so, so sorry. 🌹</strong><br><br>
+        — Kuch nhi hota🥺(IYKYK😁)
+      </p>
+    </div>
+
+    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px">
+      <span style="font-size:2rem; animation:balloonFloat 2s infinite">🌸</span>
+      <span style="font-size:2rem; animation:balloonFloat 2.5s infinite">💕</span>
+      <span style="font-size:2rem; animation:balloonFloat 1.5s infinite">✨</span>
+      <span style="font-size:2rem; animation:balloonFloat 3s infinite">🌹</span>
+      <span style="font-size:2rem; animation:balloonFloat 2s infinite 0.5s">🎀</span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+// ===================== FLOATING HEARTS =====================
+const heartEmojis = ['💕','💗','💖','💝','💞','🌸','✨','💫','🌷'];
+function createFloatingHeart() {
+  const hb = document.getElementById('heartsBg');
+  const h = document.createElement('div');
+  h.className = 'heart-float';
+  h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  h.style.left = Math.random() * 100 + 'vw';
+  h.style.animationDuration = (6 + Math.random() * 8) + 's';
+  h.style.animationDelay = (Math.random() * 3) + 's';
+  h.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+  hb.appendChild(h);
+  setTimeout(() => h.remove(), 15000);
+}
+setInterval(createFloatingHeart, 400);
+
+// Twinkle stars
+function createStar() {
+  const s = document.createElement('div');
+  s.className = 'star-particle';
+  s.textContent = ['✨','⭐','🌟'][Math.floor(Math.random()*3)];
+  s.style.left = Math.random()*100+'vw';
+  s.style.top = Math.random()*100+'vh';
+  s.style.animationDelay = Math.random()*3+'s';
+  document.body.appendChild(s);
+}
+for(let i=0;i<20;i++) createStar();
+
+// ===================== PAGE NAV =====================
+function goToPage(id) {
+  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
+  const pg = document.getElementById(id);
+  pg.classList.add('active');
+  pg.querySelectorAll('.glass-box > *').forEach((el,i) => {
+    el.style.opacity='0'; el.style.transform='translateY(30px)';
+    setTimeout(()=>{
+      el.style.transition='all 0.6s ease';
+      el.style.opacity='1'; el.style.transform='translateY(0)';
+    }, i*120);
+  });
+
+  // Trigger page-specific init
+  if(id === 'page4') startForgivenessMeter();
+  if(id === 'page6') startConfetti();
+}
+
+// ===================== PAGE 1 — CUTE METER =====================
+let cuteVal = 0;
+const cuteMessages = [
+  "Detecting adorableness... 🔍",
+  "Counting smiles... 😊",
+  "Measuring heart glow... 💗",
+  "Calculating charm... ✨",
+  "Overloading cuteness sensors... 💥",
+  "Please wait... this may take a while! 🌸",
+  "Results are off the charts! 📊",
+  "Finalizing measurements... 💖"
+];
+
+function startCuteMeter() {
+  const fill = document.getElementById('cuteMeter');
+  const pct  = document.getElementById('cutePercent');
+  const msg  = document.getElementById('meterMsg');
+  let v = 0;
+  const iv = setInterval(() => {
+    v += Math.random() * 2.5;
+    if(v >= 100) { v = 100; clearInterval(iv); setTimeout(()=>goToPage('page2'), 800); }
+    fill.style.width = v + '%';
+    pct.textContent = Math.floor(v) + '%';
+    msg.textContent = cuteMessages[Math.floor(v/13)] || "Almost there! 💕";
+  }, 60);
+}
+startCuteMeter();
+
+// ===================== PAGE 2 — HEARTS =====================
+const heartMessages = [
+  {
+    emoji:'💖',
+    msg:"Radhika, tum meri sabse achhi dost ho. Tumhe meri lagbhag har baat pata hoti hai aur tum mujhe sabse zyada samajhti ho. 💕"
+  },
+  {
+    emoji:'💗',
+    msg:"Jab bhi main kisi baat se dukhi hota hoon, tum hamesha meri baat sunti ho aur mujhe support karti ho. 🌸"
+  },
+  {
+    emoji:'💓',
+    msg:"Tum mujhe har situation ko samjhane ki koshish karti ho aur mujhe sahi raasta dikhati ho. ✨"
+  },
+  {
+    emoji:'💞',
+    msg:"Tumhari sabse achhi baat ye hai ki tum bina judge kiye meri feelings ko samajh leti ho. 🌷"
+  },
+  {
+    emoji:'💕',
+    msg:"Meri life me tum jaisi dost hona mere liye bahut special baat hai. 💖"
+  },
+  {
+    emoji:'💘',
+    msg:"Thank you hamesha mere saath khade rehne ke liye, mujhe samajhne ke liye aur meri life ka itna important part hone ke liye. 🌹"
+  }
+];
+let openedHearts = 0;
+
+function openHeart(i) {
+  const cards = document.querySelectorAll('.heart-card');
+  if(cards[i].classList.contains('opened')) return;
+  cards[i].classList.add('opened');
+  cards[i].querySelector('.card-heart').textContent = '✓';
+  openedHearts++;
+  document.getElementById('popEmoji').textContent = heartMessages[i].emoji;
+  document.getElementById('popMsg').textContent = heartMessages[i].msg;
+  document.getElementById('popOverlay').classList.add('show');
+  if(openedHearts === 6) {
+    setTimeout(() => { document.getElementById('nextBtn2').style.display='inline-block'; }, 500);
+  }
+}
+function closePopup() { document.getElementById('popOverlay').classList.remove('show'); }
+
+// ===================== PAGE 3 — BALLOONS =====================
+const balloonData = [
+{
+emoji:'🎈',
+msg:"Radhika, tum bahut kind aur caring ho. Tum hamesha dusron ki feelings ko samajhne ki koshish karti ho aur sabki help karne ke liye ready rehti ho. 💕"
+},
+{
+emoji:'🌻',
+msg:"Tumhari sabse special baat ye hai ki jab bhi main dukhi ya confused hota hoon, tum meri baat dhyan se sunti ho aur mujhe support karti ho. 🌸"
+},
+{
+emoji:'🌟',
+msg:"Tum bahut smart ho aur padhai me bhi kaafi achhi ho. Tumhare dedication aur hard work ki main hamesha respect karta hoon. 📚✨"
+},
+{
+emoji:'🎁',
+msg:"Tumhare andar ek alag hi positivity hai. Tum logon ko motivate karti ho aur unhe better feel karwati ho. 🌟"
+},
+{
+emoji:'💝',
+msg:"Aur haan, ek choti si baat 😄 — kabhi kabhi tum baaton ko thoda jaldi dil ya ego par le leti ho, lekin phir bhi tumhara dil bahut achha hai aur isi wajah se tum itni special ho. 💗"
+}
+];
+
+let poppedCount = 0;
+let currentBalloon = 0;
+
+// Only allow popping the next in sequence
+function popBalloon(i) {
+  if(i !== poppedCount) {
+    document.getElementById('balloonHint').textContent = '👆 Pop them one by one! Start from the first! 💕';
+    return;
+  }
+  const balloons = document.querySelectorAll('.balloon');
+  balloons[i].classList.add('popped');
+  poppedCount++;
+
+  document.getElementById('balloonEmoji').textContent = balloonData[i].emoji;
+  document.getElementById('balloonMsg').textContent = balloonData[i].msg;
+
+  const btn = document.getElementById('balloonCloseBtn');
+  if(poppedCount >= 5) {
+    btn.textContent = 'Open the Next Page 🌸';
+    btn.onclick = () => { document.getElementById('balloonOverlay').classList.remove('show'); goToPage('page4'); };
+  } else {
+    btn.textContent = 'Next Balloon 🎈';
+    btn.onclick = closeBalloonPopup;
+  }
+  document.getElementById('balloonOverlay').classList.add('show');
+}
+function closeBalloonPopup() { document.getElementById('balloonOverlay').classList.remove('show'); }
+
+// ===================== PAGE 4 — FORGIVENESS METER =====================
+function startForgivenessMeter() {
+  const fill = document.getElementById('forgiveMeter');
+  const pct  = document.getElementById('forgivePercent');
+  const msg  = document.getElementById('forgiveMsg');
+  let v = 0;
+  const forgiveMessages = [
+    "Measuring your sweet heart... 💗",
+    "Calculating kindness levels... 🌸",
+    "Sensing forgiveness energy... ✨",
+    "Your heart is too pure... 💖",
+    "Meter is overloading... 💥",
+    "ERROR: Too much forgiveness! 🚨",
+    "INFINITE detected... ♾️"
+  ];
+  const iv = setInterval(() => {
+    v += Math.random() * 3;
+    if(v >= 250) {
+      v = 250;
+      fill.style.width = '100%';
+      pct.textContent = '∞';
+      msg.textContent = '';
+      clearInterval(iv);
+      document.getElementById('brokenDiv').style.display='block';
+      setTimeout(()=>{ document.getElementById('loveBtn').style.display='inline-block'; }, 1200);
+      return;
+    }
+    fill.style.width = Math.min((v/250)*100, 100) + '%';
+    pct.textContent = Math.floor(v) + '%';
+    msg.textContent = forgiveMessages[Math.floor(v/36)] || "∞ INFINITE ∞";
+  }, 50);
+}
+
+// ===================== PAGE 6 — CONFETTI =====================
+function startConfetti() {
+  const container = document.getElementById('confetti');
+  const emojis = ['🌸','💕','✨','🌟','💗','🎊','🎀','💝','🌹','⭐'];
+  function burst() {
+    for(let i=0;i<3;i++) {
+      const el = document.createElement('div');
+      el.style.cssText = `position:absolute;font-size:${1+Math.random()*1.5}rem;left:${Math.random()*100}%;top:-30px;opacity:1;transition:all ${2+Math.random()*2}s ease;`;
+      el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      container.appendChild(el);
+      setTimeout(()=>{ el.style.top='110%'; el.style.opacity='0'; el.style.transform=`translateX(${-60+Math.random()*120}px) rotate(${360*Math.random()}deg)`; },50);
+      setTimeout(()=>el.remove(),5000);
+    }
+  }
+  setInterval(burst,300);
+}
+
+</script>
+</body>
+</html>
